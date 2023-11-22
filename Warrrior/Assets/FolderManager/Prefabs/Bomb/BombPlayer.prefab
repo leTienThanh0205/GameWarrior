@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1772ce2e78f29fb42b18fd5519badd64, type: 2}
+  - {fileID: 2100000, guid: cbfe8774e2521474397d6ce76331aad9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14442,7 +14442,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b94a7dd23f416147b432b05da435ef0, type: 2}
+  - {fileID: 2100000, guid: da77db30a12ffdf4fabd781dcc3ef98c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14571,7 +14571,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1946799591
-  m_SortingLayer: 5
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -22869305, guid: 572cdef7cbb9803458b1e55f9a8b2426, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
