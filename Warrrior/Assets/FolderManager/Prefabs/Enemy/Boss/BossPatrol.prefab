@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2425697729488702422}
-  - component: {fileID: 3849895832752432923}
+  - component: {fileID: 5298376079825464701}
   m_Layer: 0
   m_Name: BossPatrol
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 1712417645283545187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3849895832752432923
+--- !u!114 &5298376079825464701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3892581519534088410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e570883bcc1ab4c9739f56ab63a4e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2fc332f1b58364cbd4e7a269e7f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftEdge: {fileID: 835812543863899779}
