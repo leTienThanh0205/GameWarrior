@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 8258864798220154464}
   - component: {fileID: 6024781156001247413}
   - component: {fileID: 8458111667903895429}
+  - component: {fileID: 7473720428417399807}
+  - component: {fileID: 6934609164725006304}
+  - component: {fileID: 1701390649116521736}
   m_Layer: 0
   m_Name: BoneGreen
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1269969967
+  m_SortingLayerID: 292710535
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1993910855, guid: 28433fcc51bf2aa44abf04d896eedc3b, type: 3}
@@ -106,3 +109,86 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7473720428417399807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982325220323721388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b67c53aaf0d89e47941f0f8c20f7c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 1
+  range: 2.5
+  damage: 15
+  colliderDistance: 0.45
+  boxCollider: {fileID: 6934609164725006304}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &6934609164725006304
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982325220323721388}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2049675, y: -0.01184845}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.25, y: 6.25}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7842331, y: 2.2654648}
+  m_EdgeRadius: 0
+--- !u!114 &1701390649116521736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982325220323721388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15acc079dca785d45b3e6d2455d2409e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  healthbarEnemy: {fileID: 0}
+  maxHealth: 100
+  effectDie: {fileID: 5294858721589624720, guid: f3666d456450bb84e968661e84859cde, type: 3}
+  effectHurt: {fileID: 4940013262718410800, guid: cef661a42cd7e6f408b11adf02ee0251, type: 3}
+  coints: {fileID: 685556222202186424, guid: a0313ce3d553c9c43a1e4e3a7cdf33cc, type: 3}

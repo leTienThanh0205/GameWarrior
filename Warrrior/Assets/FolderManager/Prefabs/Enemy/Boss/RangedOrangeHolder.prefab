@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 8822731859884106613}
   - component: {fileID: 8190230980678988214}
   - component: {fileID: 1789592632214700832}
-  - component: {fileID: 8271881403004383050}
+  - component: {fileID: 5951860465454781163}
   m_Layer: 0
   m_Name: BossOrange
   m_TagString: Untagged
@@ -1160,7 +1160,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8271881403004383050
+--- !u!114 &5951860465454781163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3365598265930773598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2e4c6230f3559459af726197657159, type: 3}
+  m_Script: {fileID: 11500000, guid: c493866140abc834992194f1a210c58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 1
@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4838252304273625945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.7751185, y: 1.2691071, z: 0.020779638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

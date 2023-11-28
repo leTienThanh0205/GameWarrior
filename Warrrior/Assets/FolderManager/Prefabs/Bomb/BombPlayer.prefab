@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3418218755607417215}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0.34, z: 0.21616694}
+  m_LocalPosition: {x: 0.23, y: 0.062, z: 0.21616694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cbfe8774e2521474397d6ce76331aad9, type: 2}
+  - {fileID: 2100000, guid: 1772ce2e78f29fb42b18fd5519badd64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4795,7 +4795,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1269969967
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -4997,7 +4997,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5432,7 +5432,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5493,7 +5493,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 11
+    angle: 1
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -5698,7 +5698,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2000
+      scalar: 600
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9632,7 +9632,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1269969967
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -9692,7 +9692,7 @@ Transform:
   m_GameObject: {fileID: 6231991224142944658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.099999905, y: 0.2800007, z: 0.21616694}
+  m_LocalPosition: {x: 0.148, y: 0.037, z: 0.21616694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9834,7 +9834,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9952,7 +9952,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14442,7 +14442,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da77db30a12ffdf4fabd781dcc3ef98c, type: 2}
+  - {fileID: 2100000, guid: 3b94a7dd23f416147b432b05da435ef0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14460,7 +14460,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1269969967
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -14570,10 +14570,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1946799591
-  m_SortingLayer: 0
+  m_SortingLayerID: 292710535
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -22869305, guid: 572cdef7cbb9803458b1e55f9a8b2426, type: 3}
+  m_Sprite: {fileID: 282023341, guid: 79a7089186b5c834996a21f6e83129c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14637,9 +14637,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2097516}
+  m_Offset: {x: 0.09651308, y: -0.09841223}
   serializedVersion: 2
-  m_Radius: 0.33024836
+  m_Radius: 0.17238073
 --- !u!50 &3605088061697684888
 Rigidbody2D:
   serializedVersion: 4
@@ -14679,5 +14679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874bd7e7473ca7641bd6f785b3119a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damageBoss: 21
+  damageFly: 41
   moveSpeed: {x: 10, y: 10}
