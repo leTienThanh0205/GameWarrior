@@ -17,13 +17,16 @@ public class MeleeEnemy : MonoBehaviour
 
     //References
     private Animator anim;
-    //private Health playerHealth;
+    private Health playerHealth;
     private EnemyPatrol enemyPatrol;
+    AudioManager audioManager;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     private void Update()
@@ -51,8 +54,8 @@ public class MeleeEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
 
-        //if (hit.collider != null)
-           // playerHealth = hit.transform.GetComponent<Health>();
+        if (hit.collider != null)
+            playerHealth = hit.transform.GetComponent<Health>();
 
         return hit.collider != null;
     }
@@ -66,7 +69,7 @@ public class MeleeEnemy : MonoBehaviour
     private void DamagePlayer()
     {
         if (PlayerInSight())
-            Debug.Log("chem player");
-           // playerHealth.TakeDamage(damage);
+            audioManager.PlaySFX(audioManager.enemySwordAttack);
+            playerHealth.TakeDamage(damage);
     }
 }

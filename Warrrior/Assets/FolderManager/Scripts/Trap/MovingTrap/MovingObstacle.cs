@@ -50,16 +50,16 @@ public class MovingObstacle : MonoBehaviour
         if (pointIndex == pointCount - 1)
         {
             direction = -1;
-            Debug.Log(direction);
+            //Debug.Log(direction);
         }
         if (pointIndex == 0)
         {
             direction = 1;
-            Debug.Log(direction);
+          //  Debug.Log(direction);
 
         }
         pointIndex += direction;
-        Debug.Log(pointIndex);
+        //Debug.Log(pointIndex);
         targesPos = wayPoints[pointIndex].transform.position;
         StartCoroutine(WaitNextPoint());
     }

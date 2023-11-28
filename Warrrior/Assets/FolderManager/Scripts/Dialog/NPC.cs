@@ -14,6 +14,13 @@ public class NPC : MonoBehaviour
     public bool playerIsClose;
     public GameObject conButton;
     private Animator anim;
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -31,6 +38,8 @@ public class NPC : MonoBehaviour
             else
             {
                 dialogPanel.SetActive(true);
+                audioManager.PlaySFX(audioManager.dialog);
+
                 StartCoroutine(Typing());
             }
         }
@@ -41,6 +50,7 @@ public class NPC : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
+            audioManager.PlaySFX(audioManager.dialog);
             NextLime();
         }
     }

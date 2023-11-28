@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovemt : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
@@ -16,9 +16,22 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 8f;
     public float airWalkSpeed = 3f;
     public float jumpImpulse = 10f;
-
+    [Header("Dash")]
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private float dashingPower = 24f;
+    private float dasdingTime = 0.2f;
+    private float dashingColldown = 1f;
+    [SerializeField] private TrailRenderer tr;
+    [Header("climp")]
+    private bool esSuelo;
+    [SerializeField] private float velocidadEscalar;
+    private CapsuleCollider2D box;
+    private float gravedadInicial;
+    private bool escalando;
 
     TouchingDirection touchingDirection;
+    Timer timer;
     public float CurrentMoveSpeed
     {
         get
@@ -120,15 +133,22 @@ public class PlayerMovement : MonoBehaviour
             return anim.GetBool(AnimationStrings.isAlive);
         }
     }
+    AudioManager audioManager;
 
+   
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        box = GetComponent<CapsuleCollider2D>();
         touchingDirection = GetComponent<TouchingDirection>();
-       // damageable = GetComponent<Damageable>();
+        timer = GetComponent<Timer>();
+        gravedadInicial = rb.gravityScale;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        // damageable = GetComponent<Damageable>();
     }
 
     void Start()
@@ -141,12 +161,77 @@ public class PlayerMovement : MonoBehaviour
     {
        // if (!damageable.LockVelocity)
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        if (isDashing)
+        {
+            rb.velocity = new Vector2(moveInput.x * dashingPower, rb.velocity.y);
+            return;
+        }
+        Escalar();
 
-        anim.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
+       // anim.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
     void Update()
     {
+        ///dash
+        if (isDashing)
+        {
+            rb.velocity = new Vector2(moveInput.x * dashingPower, rb.velocity.y);
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.C) && canDash)
+        {
+            StartCoroutine(Dash());
+            audioManager.PlaySFX(audioManager.dash);
+        }
 
+        if (Mathf.Abs(rb.velocity.y) > Mathf.Epsilon)
+        {
+            anim.SetFloat(AnimationStrings.yVelocity, Mathf.Sign(rb.velocity.y));
+
+        }
+        else
+        {
+            anim.SetFloat(AnimationStrings.yVelocity, 0);
+        }
+    }
+    //climp
+
+    private void Escalar()
+    {
+        if ((moveInput.y != 0 || escalando) && (box.IsTouchingLayers(LayerMask.GetMask("Climp"))))
+        {
+            Vector2 velocidadSubida = new Vector2(rb.velocity.x, moveInput.y * velocidadEscalar);
+            rb.velocity = velocidadSubida;
+            rb.gravityScale = 0;
+            escalando = true;
+
+        }
+        else
+        {
+            rb.gravityScale = gravedadInicial;
+            escalando = false;
+
+        }
+        if (esSuelo)
+        {
+            escalando = false;
+        }
+        anim.SetBool("climp", escalando);
+    }
+    //Dash
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        tr.emitting = true;
+        yield return new WaitForSeconds(dasdingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingColldown);
+        canDash = true;
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -155,6 +240,7 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = moveInput != Vector2.zero;
             SetFacingDirection(moveInput);
+            audioManager.PlaySFX(audioManager.walk);
         }
         else
         {
@@ -182,6 +268,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             IsRunning = true;
+            audioManager.PlaySFX(audioManager.run);
         }
         else if (context.canceled)
         {
@@ -192,6 +279,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.started && touchingDirection.IsGrounded && CanMove)
         {
+            audioManager.PlaySFX(audioManager.jump);
             anim.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
@@ -200,18 +288,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.started)
         {
+            audioManager.PlaySFX(audioManager.swordAttack);
             anim.SetTrigger(AnimationStrings.attackTrigger);
 
         }
     }
-    public void OnRangedAttack(InputAction.CallbackContext context)
+   /* public void OnRangedAttack(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            anim.SetTrigger(AnimationStrings.rangedAttackTrigger);
-
+            // timer.OnClickTimer();
+             anim.SetTrigger(AnimationStrings.rangedAttackTrigger);
         }
-    }
+    }*/
     public void OnHit(int damage, Vector2 knockback)
     {
        // damageable.LockVelocity = true;

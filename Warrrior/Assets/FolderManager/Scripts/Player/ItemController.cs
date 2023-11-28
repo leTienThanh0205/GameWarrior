@@ -5,50 +5,100 @@ using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Text textHP,textArrow;
-    private int numberHP = 0;
-    private int numberArrow = 0;
+    public Text textHP;
+    public Text textCoint;
+    public Text textDiamond;
+    public Text textCointFinish;
+    public Text textDiamondFinish;
+    public Text textCointLoss;
+    public Text textDiamondLoss;
+    public int numberHP = 0;
+    private int numberCoint = 0;
+    private int numberDiamond = 0;
+    public int addHealth = 20;
+    private Health healthPlayer;
+    public GameObject diamondSystem;
+    public GameObject cointSystem;
+    AudioManager audioManager;
+
+    public GameObject arrow;
+    public int numberArrow = 0;
+    public GameObject bomb;
+    public int numberBomb = 0;
+    public GameObject panelWinGame;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+    }
     void Start()
     {
-        
+        healthPlayer = GetComponent<Health>();
+        arrow.SetActive(false); bomb.SetActive(false);
+        panelWinGame.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.H) && numberHP>0 && healthPlayer.currentHealth<100)
         {
             numberHP--;
-            Debug.Log("huy HP");
-        }else if (Input.GetKeyDown(KeyCode.M))
-        {
-            numberArrow--;
-            Debug.Log("huy HP");
-
+            healthPlayer.AddHealth(addHealth);
+            audioManager.PlaySFX(audioManager.addHealth);
         }
-        if (numberHP < 0)
+        if(numberBomb>0)
         {
-            Debug.Log("Die CMNR");
+            bomb.SetActive(true);
+        }
+        if (numberArrow > 0)
+        {
+            arrow.SetActive(true);
         }
         textHP.text = numberHP.ToString();
-        textArrow.text = numberArrow.ToString();
-
+        textDiamond.text = numberDiamond.ToString();
+        textDiamondFinish.text = numberDiamond.ToString();
+        textDiamondLoss.text = numberDiamond.ToString();
+        textCointLoss.text = numberCoint.ToString();
+        textCointFinish.text = numberCoint.ToString();
+        textCoint.text = numberCoint.ToString();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("HP"))
+        /*if (collision.CompareTag("HP"))
         {
             numberHP++;
-            Debug.Log("Eat HP");
-            Destroy(collision.gameObject);
-        }
+            //Destroy(collision.gameObject);
+        }*/
         if (collision.CompareTag("Arrow"))
         {
+            audioManager.PlaySFX(audioManager.arrow);
             numberArrow++;
-            Debug.Log("Eat Arrow");
             Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Bomb"))
+        {
+            audioManager.PlaySFX(audioManager.arrow);
+            numberBomb++;
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Coint"))
+        {
+            numberCoint +=50;
 
+            audioManager.PlaySFX(audioManager.coint);
+            Destroy(cointSystem);
+        }
+        if (collision.CompareTag("Diamond"))
+        {
+            numberDiamond ++;
+            audioManager.PlaySFX(audioManager.diamond);
+            Destroy(diamondSystem);
+        }
+        if (collision.CompareTag("Key"))
+        {
+            audioManager.PlaySFX(audioManager.finish);
+            panelWinGame.SetActive(true);
         }
     }
 }

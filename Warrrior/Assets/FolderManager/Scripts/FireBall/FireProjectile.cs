@@ -9,6 +9,7 @@ public class FireProjectile : EnemyDamage
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;
+    public int damage = 10;
 
     private bool hit;
 
@@ -38,14 +39,29 @@ public class FireProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hit = true;
-        base.OnTriggerEnter2D(collision); //Execute logic from parent script first
-        coll.enabled = false;
-
-        if (anim != null)
-            anim.SetTrigger("explode"); //When the object is a fireball explode it
-        else
-            gameObject.SetActive(false); //When this hits any object deactivate arrow
+        Health health = collision.GetComponent<Health>();
+        if (collision.CompareTag("Player"))
+        {
+            hit = true;
+            base.OnTriggerEnter2D(collision); //Execute logic from parent script first
+            coll.enabled = false;
+            health.TakeDamage(damage);
+            //anim.SetTrigger("explode");
+            if (anim != null)
+                anim.SetTrigger("explode"); //When the object is a fireball explode it
+            else
+                gameObject.SetActive(false); //When this hits any object deactivate arrow
+        }
+        if (collision.CompareTag("Wall"))
+        {
+            hit = true;
+            base.OnTriggerEnter2D(collision); //Execute logic from parent script first
+            coll.enabled = false;
+            if (anim != null)
+                anim.SetTrigger("explode"); //When the object is a fireball explode it
+            else
+                gameObject.SetActive(false); //When this hits any object deactivate arrow
+        }
     }
     private void Deactivate()
     {

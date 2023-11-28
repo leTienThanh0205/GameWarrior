@@ -24,12 +24,15 @@ public class RangedEnemy : MonoBehaviour
 
     //References
     private Animator anim;
+    AudioManager audioManager;
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     private void Update()
@@ -54,6 +57,7 @@ public class RangedEnemy : MonoBehaviour
     {
         //SoundManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
+        audioManager.PlaySFX(audioManager.enemyFireAttack);
         fireballs[FindFireball()].transform.position = firepoint.position;
         fireballs[FindFireball()].GetComponent<FireProjectile>().ActivateProjectile();
     }

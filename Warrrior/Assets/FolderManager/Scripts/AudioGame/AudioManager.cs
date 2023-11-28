@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip coint;
     public AudioClip diamond;
     public AudioClip arrow;
+    public AudioClip finish;
+    public AudioClip dialog;
     void Start()
     {
         music.clip = background;
